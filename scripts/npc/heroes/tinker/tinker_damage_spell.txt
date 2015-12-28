@@ -1,0 +1,68 @@
+"tinker_damage_spell"
+{
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                     "ability_datadriven"
+    
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"
+    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+    "FightRecapLevel"               "1"
+    "AbilityTextureName"            "enigma_black_hole"
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"              "800"
+    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+
+    // Time     
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"               "3.0 3.0 3.0 3.0"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"               "20"
+
+    // Damage
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityDamage"                 "100 200 300 400"
+
+    // Cache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+        "particle"        "particles/units/heroes/hero_beastmaster/beastmaster_primal_roar.vpcf"
+        "soundfile"       "soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+    }
+
+    "OnSpellStart"
+    {
+        "FireSound"
+        {
+            "EffectName"          "Hero_Beastmaster.Primal_Roar"
+            "Target"              "TARGET"
+        }
+
+        "FireEffect"
+        {
+            "EffectName"        "particles/units/heroes/hero_beastmaster/beastmaster_primal_roar.vpcf"
+            "EffectAttachType"  "start_at_customorigin"
+            "Target"            "TARGET"
+            "ControlPointEntities"
+            {
+                "CASTER"    "attach_cast4_primal_roar"
+                "TARGET"    "attach_hitloc"
+            }
+        }
+
+        "Damage"
+        {
+            "Target"          "TARGET"
+            "Damage"          "%AbilityDamage"
+            "Type"            "DAMAGE_TYPE_PURE"
+        }
+    }
+}
