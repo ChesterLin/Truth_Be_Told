@@ -18,8 +18,9 @@
     "precache"
     {
         "particle"                 "particles/summoner/summoner_spell_flash_start.vpcf"
-        "particle"                 "particles/summoner/summoner_spell_flash_start_stars.vpcf"
         "particle"                 "particles/summoner/summoner_spell_flash_end_stars.vpcf"
+        "particle"                 "particles/summoner/summoner_spell_flash_end.vpcf"
+        "soundfile"                "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
     }
     
     // Special  
@@ -48,6 +49,11 @@
             "Target"                "CASTER"
             "EffectAttachType"      "attach_origin"
         }
-        
+
+        "FireSound"
+        {
+            "EffectName"    "Hero_Antimage.Blink_out"
+            "Target"        "CASTER"
+        }
     }
 }

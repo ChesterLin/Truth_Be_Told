@@ -17,7 +17,7 @@ function Flash(keys)
     FindClearSpaceForUnit(caster, point, false)
     ProjectileManager:ProjectileDodge(caster)
     
-    local blinkIndex = ParticleManager:CreateParticle("particles/summoner/summoner_spell_flash_end_stars.vpcf", PATTACH_ABSORIGIN, caster)
+    local blinkIndex = ParticleManager:CreateParticle("particles/summoner/summoner_spell_flash_end.vpcf", PATTACH_ABSORIGIN, caster)
     
     Timers:CreateTimer({
         endTime = 1, 
