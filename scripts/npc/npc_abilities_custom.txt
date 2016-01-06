@@ -10,6 +10,7 @@
 
         "AbilityTextureName"            "enigma_black_hole"
         "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "MaxLevel"                      "1"
         
         // Casting
         //-------------------------------------------------------------------------------------------------------------
@@ -60,5 +61,16 @@
                 "Target"        "CASTER"
             }
         }
+    }
+    
+    "summoner_spell_exhaust"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"                     "ability_datadriven"
+
+        "AbilityTextureName"            "phantom_lancer_phantom_edge"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "MaxLevel"                      "1"
     }
 }

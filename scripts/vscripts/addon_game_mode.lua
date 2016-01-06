@@ -7,7 +7,6 @@ if SummonerSkills == nil then
 end
 
 function Precache( context )
-    PrecacheUnitByNameSync("npc_dota_hero_clinkz", context)
 	--[[
 		Precache things we know we'll use.  Possible file types include (but not limited to):
 			PrecacheResource( "model", "*.vmdl", context )
@@ -32,6 +31,7 @@ end
 -- Evaluate the state of the game
 function SummonerSkills:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_PRE_GAME then
+        CustomGameEventManager:Send_ServerToAllClients("display_timer", {msg="Remaining", duration=10, mode=0, endfade=false, position=0, warning=5, paused=false, sound=true} )
                 
         for i=0,9 do
             local player = PlayerResource:GetPlayer(i)
@@ -45,16 +45,23 @@ function SummonerSkills:OnThink()
             
             local hero = PlayerResource:GetSelectedHeroEntity(i)
             if hero then
-                hero:AddAbility( "clinkz_wind_walk" )
-                local newAbility = hero:FindAbilityByName( "clinkz_wind_walk" )
+                hero:AddAbility( "summoner_spell_flash" )
+                local newAbility = hero:FindAbilityByName( "summoner_spell_flash" )
                 if newAbility then
-                    newAbility:SetHidden(false)
+                    newAbility:SetHidden(true)
                     newAbility:SetLevel(1)
-                    newAbility:CastAbility()
                     print ("ABILITY COUNT ", hero:GetAbilityCount())
                 else
                     print ("FAIL TO SET ABILITY ", i)
                 end
+                
+                hero:AddAbility( "summoner_spell_exhaust" )
+                local newAbility = hero:FindAbilityByName( "summoner_spell_exhaust" )
+                if newAbility then
+                    newAbility:SetHidden(true)
+                    newAbility:SetLevel(1)
+                end
+                
             else
                 print ("FAIL TO FIND HERO ", i)
             end
